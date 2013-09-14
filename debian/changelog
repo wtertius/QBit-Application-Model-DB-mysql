@@ -1,0 +1,6 @@
+libqbit-application-model-db-mysql-perl (0.001) raring; urgency=low
+
+  * Initial commit
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Sat, 14 Sep 2013 14:20:45 +0400
+
