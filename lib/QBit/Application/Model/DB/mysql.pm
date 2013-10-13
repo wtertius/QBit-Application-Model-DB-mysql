@@ -41,22 +41,22 @@ sub _create_sql_db {
 
     return
         'CREATE DATABASE '
-      . $self->{'__DBH__'}->quote_identifier($self->get_option('database'))
+      . $self->{'__DBH__'}{$$}->quote_identifier($self->get_option('database'))
       . "\nDEFAULT CHARACTER SET UTF8;\n" . 'USE '
-      . $self->{'__DBH__'}->quote_identifier($self->get_option('database')) . ";\n\n";
+      . $self->{'__DBH__'}{$$}->quote_identifier($self->get_option('database')) . ";\n\n";
 }
 
 sub _connect {
     my ($self) = @_;
 
-    unless (defined($self->{'__DBH__'})) {
+    unless (defined($self->{'__DBH__'}{$$})) {
         my $dsn = 'DBI:mysql:'
           . join(
             ';', map {$_ . '=' . $self->get_option($_)}
               grep {defined($self->get_option($_))} qw(database host port)
           );
 
-        $self->{'__DBH__'} = DBI->connect(
+        $self->{'__DBH__'}{$$} = DBI->connect(
             $dsn,
             $self->get_option('user',     ''),
             $self->get_option('password', ''),
@@ -67,9 +67,9 @@ sub _connect {
             },
         ) || throw DBI::errstr();
 
-        $self->{'__DBH__'}{'mysql_auto_reconnect'} = FALSE;
-        $self->{'__DBH__'}->do('SET NAMES utf8');
-        $self->{'__DBH__'}{'mysql_enable_utf8'} = TRUE;
+        $self->{'__DBH__'}{$$}{'mysql_auto_reconnect'} = FALSE;
+        $self->{'__DBH__'}{$$}->do('SET NAMES utf8');
+        $self->{'__DBH__'}{$$}{'mysql_enable_utf8'} = TRUE;
     }
 }
 
