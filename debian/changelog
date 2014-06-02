@@ -1,3 +1,11 @@
+libqbit-application-model-db-mysql-perl (0.003) raring; urgency=low
+
+  * Removed PPA info
+
+  * Throw Exception::DB::DuplicateEntry while editing.
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Mon, 02 Jun 2014 16:27:24 +0400
+
 libqbit-application-model-db-mysql-perl (0.002) raring; urgency=low
 
   * Fixed fork error
