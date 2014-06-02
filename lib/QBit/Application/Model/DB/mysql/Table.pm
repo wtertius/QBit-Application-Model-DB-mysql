@@ -6,8 +6,6 @@ use base qw(QBit::Application::Model::DB::Table);
 
 use QBit::Application::Model::DB::mysql::Field;
 
-eval {require Exception::DB::DuplicateEntry};
-
 our $ADD_CHUNK = 1000;
 
 sub create_sql {
@@ -16,8 +14,8 @@ sub create_sql {
     throw gettext('Inherites does not realize') if $self->inherits;
 
     return
-        'CREATE TABLE '
-      . $self->quote_identifier($self->name)
+        'CREATE TABLE ' 
+      . $self->quote_identifier($self->name) 
       . " (\n    "
       . join(
         ",\n    ",
@@ -88,15 +86,7 @@ sub add_multi {
             }
         }
 
-        try {
-            $add_rows += $self->db->_do($sql, @params);
-        }
-        catch Exception::DB with {
-            my $e = shift;
-            $e->{'text'} =~ /^Duplicate entry/
-              ? throw Exception::DB::DuplicateEntry $e
-              : throw $e;
-        };
+        $add_rows += $self->db->_do($sql, @params);
     }
 
     $self->db->commit() if $need_transact;
@@ -191,7 +181,7 @@ sub _create_sql_index {
     my ($self, $index) = @_;
 
     return
-        ($index->{'unique'} ? 'UNIQUE ' : '')
+        ($index->{'unique'} ? 'UNIQUE ' : '') 
       . 'INDEX '
       . $self->quote_identifier(
         substr(join('_', ($index->{'unique'} ? 'uniq' : ()), $self->name, '', @{$index->{'fields'}}), 0, 64))

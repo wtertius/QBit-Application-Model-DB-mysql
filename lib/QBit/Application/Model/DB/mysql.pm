@@ -8,6 +8,8 @@ use QBit::Application::Model::DB::mysql::Table;
 use QBit::Application::Model::DB::mysql::Query;
 use QBit::Application::Model::DB::Filter;
 
+eval {require Exception::DB::DuplicateEntry};
+
 sub filter {
     my ($self, $filter, %opts) = @_;
 
@@ -18,6 +20,23 @@ sub query {
     my ($self) = @_;
 
     return QBit::Application::Model::DB::mysql::Query->new(db => $self);
+}
+
+sub _do {
+    my ($self, $sql, @params) = @_;
+
+    my $res;
+    try {
+        $res = $self->SUPER::_do($sql, @params);
+    }
+    catch Exception::DB with {
+        my $e = shift;
+        $e->{'text'} =~ /^Duplicate entry/
+          ? throw Exception::DB::DuplicateEntry $e
+          : throw $e;
+    };
+
+    return $res;
 }
 
 sub _get_table_class {
