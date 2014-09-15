@@ -104,20 +104,29 @@ our %FIELD2STR = (
         );
     },
     TEXT => sub {
-        return
-            $_->quote_identifier($_->name) . ' '
-          . uc($_->type)
-          . ($_->{'binary'} ? ' BINARY' : '')
-          . (
-            $_->{'charset'} ? ' CHARACTER SET ' . $_->quote($_->{'charset'})
-            : ''
-          )
-          . (
-            $_->{'collation'} ? ' COLLATE ' . $_->quote($_->{'collation'})
-            : ''
-          )
-          . ($_->{'not_null'} ? ' NOT NULL' : '')
-          . (exists($_->{'default'}) ? ' DEFAULT ' . $_->quote($_->{'default'}) : '');
+        my @locales;
+        @locales = keys(%{$_[0]->db->get_option('locales', [])}) if $_->{'i18n'};
+        @locales = (undef) unless @locales;
+
+        my $f = $_;
+        return join(
+            ", ",
+            map {
+                    $f->quote_identifier($f->name . (defined($_) ? "_$_" : '')) . ' '
+                  . uc($f->type)
+                  . ($f->{'binary'} ? ' BINARY' : '')
+                  . (
+                    $f->{'charset'} ? ' CHARACTER SET ' . $f->quote($f->{'charset'})
+                    : ''
+                  )
+                  . (
+                    $f->{'collation'} ? ' COLLATE ' . $f->quote($f->{'collation'})
+                    : ''
+                  )
+                  . ($f->{'not_null'} ? ' NOT NULL' : '')
+                  . (exists($f->{'default'}) ? ' DEFAULT ' . $f->quote($f->{'default'}) : '')
+              } @locales
+        );
     },
     ENUM => sub {
         my $self = $_;
