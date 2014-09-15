@@ -1,3 +1,9 @@
+libqbit-application-model-db-mysql-perl (0.004) raring; urgency=low
+
+  * Generate i18n TEXT fields with locale suffixes.
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Mon, 15 Sep 2014 16:02:22 +0400
+
 libqbit-application-model-db-mysql-perl (0.003) raring; urgency=low
 
   * Removed PPA info
