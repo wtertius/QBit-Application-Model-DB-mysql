@@ -1,3 +1,9 @@
+libqbit-application-model-db-mysql-perl (0.005) raring; urgency=low
+
+  * Reconnect to server by default but not in transactions.
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Fri, 06 Mar 2015 19:14:28 +0400
+
 libqbit-application-model-db-mysql-perl (0.004) raring; urgency=low
 
   * Generate i18n TEXT fields with locale suffixes.
