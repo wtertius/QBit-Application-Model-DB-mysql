@@ -22,6 +22,15 @@ sub query {
     return QBit::Application::Model::DB::mysql::Query->new(db => $self);
 }
 
+sub transaction {
+    my ($self, $sub) = @_;
+
+    $self->_connect();
+    local $self->{'__DBH__'}{$$}{'mysql_auto_reconnect'} = FALSE;
+
+    $self->SUPER::transaction($sub);
+}
+
 sub _do {
     my ($self, $sql, @params) = @_;
 
@@ -86,7 +95,7 @@ sub _connect {
             },
         ) || throw DBI::errstr();
 
-        $self->{'__DBH__'}{$$}{'mysql_auto_reconnect'} = FALSE;
+        $self->{'__DBH__'}{$$}{'mysql_auto_reconnect'} = TRUE;
         $self->{'__DBH__'}{$$}->do('SET NAMES utf8');
         $self->{'__DBH__'}{$$}{'mysql_enable_utf8'} = TRUE;
     }
