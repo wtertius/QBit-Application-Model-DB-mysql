@@ -89,15 +89,13 @@ sub _connect {
             $self->get_option('user',     ''),
             $self->get_option('password', ''),
             {
-                PrintError => 0,
-                RaiseError => 0,
-                AutoCommit => 1,
+                PrintError           => 0,
+                RaiseError           => 0,
+                AutoCommit           => 1,
+                mysql_auto_reconnect => 1,
+                mysql_enable_utf8    => 1,
             },
         ) || throw DBI::errstr();
-
-        $self->{'__DBH__'}{$$}{'mysql_auto_reconnect'} = TRUE;
-        $self->{'__DBH__'}{$$}->do('SET NAMES utf8');
-        $self->{'__DBH__'}{$$}{'mysql_enable_utf8'} = TRUE;
     }
 }
 
