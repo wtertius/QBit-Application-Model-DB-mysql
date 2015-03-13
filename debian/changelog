@@ -1,3 +1,10 @@
+libqbit-application-model-db-mysql-perl (0.006) raring; urgency=low
+
+  * Put mysql_enable_utf8 to initial params to enable utf8 on
+    reconnection.
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Fri, 13 Mar 2015 19:45:37 +0400
+
 libqbit-application-model-db-mysql-perl (0.005) raring; urgency=low
 
   * Reconnect to server by default but not in transactions.
