@@ -102,7 +102,7 @@ sub _connect {
 sub _is_connection_error {
     my ($self, $code) = @_;
 
-    return in_array($code || 0, [2006]);
+    return in_array($code || 0, [2006, 2013]);
 }
 
 TRUE;
