@@ -1,30 +1,30 @@
-libqbit-application-model-db-mysql-perl (0.007) raring; urgency=low
+libtertiusqbit-application-model-db-mysql-perl (0.007) raring; urgency=low
 
   * Reconnect at mysql err 2013 - Lost connection to mysql server during
     query.
 
  -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Tue, 17 Mar 2015 12:25:44 +0400
 
-libqbit-application-model-db-mysql-perl (0.006) raring; urgency=low
+libtertiusqbit-application-model-db-mysql-perl (0.006) raring; urgency=low
 
   * Put mysql_enable_utf8 to initial params to enable utf8 on
     reconnection.
 
  -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Fri, 13 Mar 2015 19:45:37 +0400
 
-libqbit-application-model-db-mysql-perl (0.005) raring; urgency=low
+libtertiusqbit-application-model-db-mysql-perl (0.005) raring; urgency=low
 
   * Reconnect to server by default but not in transactions.
 
  -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Fri, 06 Mar 2015 19:14:28 +0400
 
-libqbit-application-model-db-mysql-perl (0.004) raring; urgency=low
+libtertiusqbit-application-model-db-mysql-perl (0.004) raring; urgency=low
 
   * Generate i18n TEXT fields with locale suffixes.
 
  -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Mon, 15 Sep 2014 16:02:22 +0400
 
-libqbit-application-model-db-mysql-perl (0.003) raring; urgency=low
+libtertiusqbit-application-model-db-mysql-perl (0.003) raring; urgency=low
 
   * Removed PPA info
 
@@ -32,13 +32,13 @@ libqbit-application-model-db-mysql-perl (0.003) raring; urgency=low
 
  -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Mon, 02 Jun 2014 16:27:24 +0400
 
-libqbit-application-model-db-mysql-perl (0.002) raring; urgency=low
+libtertiusqbit-application-model-db-mysql-perl (0.002) raring; urgency=low
 
   * Fixed fork error
 
  -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Sun, 13 Oct 2013 18:25:03 +0400
 
-libqbit-application-model-db-mysql-perl (0.001) raring; urgency=low
+libtertiusqbit-application-model-db-mysql-perl (0.001) raring; urgency=low
 
   * Initial commit
 
