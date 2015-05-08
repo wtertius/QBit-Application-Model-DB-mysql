@@ -8,6 +8,7 @@ use QBit::Application::Model::DB::mysql::Table;
 use QBit::Application::Model::DB::mysql::Query;
 use QBit::Application::Model::DB::Filter;
 
+eval {require Exception::DB};
 eval {require Exception::DB::DuplicateEntry};
 
 sub filter {
