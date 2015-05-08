@@ -1,3 +1,11 @@
+libtertiusqbit-application-model-db-mysql-perl (0.009) raring; urgency=low
+
+  * Add exception description.
+
+  * Add more errors to connection error list.
+
+ -- Dmitry Lukiyanchuk <tertius@yandex-team.ru>  Fri, 08 May 2015 16:13:39 +0300
+
 libtertiusqbit-application-model-db-mysql-perl (0.008) raring; urgency=low
 
   * Rename debian package
