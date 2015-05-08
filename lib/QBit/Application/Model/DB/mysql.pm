@@ -77,6 +77,7 @@ sub _create_sql_db {
 sub _connect {
     my ($self) = @_;
 
+    my $err_code;
     unless (defined($self->{'__DBH__'}{$$})) {
         my $dsn = 'DBI:mysql:'
           . join(
@@ -95,14 +96,16 @@ sub _connect {
                 mysql_auto_reconnect => 1,
                 mysql_enable_utf8    => 1,
             },
-        ) || throw DBI::errstr();
+          )
+          || ($err_code = DBI::err()) && throw Exception::DB DBI::errstr() . " ($err_code)\n",
+          errorcode => $err_code;
     }
 }
 
 sub _is_connection_error {
     my ($self, $code) = @_;
 
-    return in_array($code || 0, [2006, 2013]);
+    return in_array($code || 0, [1053, 2002, 2006, 2013]);
 }
 
 TRUE;
