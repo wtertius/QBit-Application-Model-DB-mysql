@@ -164,6 +164,12 @@ sub replace {
     $self->add($data, %opts, replace => 1);
 }
 
+sub replace_multi {
+    my ($self, $data, %opts) = @_;
+
+    $self->add_multi($data, %opts, replace => 1);
+}
+
 sub _get_field_object {
     my ($self, %opts) = @_;
 
