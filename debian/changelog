@@ -1,3 +1,9 @@
+libtertiusqbit-application-model-db-mysql-perl (0.010) raring; urgency=low
+
+  * Implement replace multi.
+
+ -- Dmitry Lukiyanchuk <tertius@yandex-team.ru>  Fri, 26 Jun 2015 16:37:41 +0300
+
 libtertiusqbit-application-model-db-mysql-perl (0.009) raring; urgency=low
 
   * Add exception description.
